@@ -1,7 +1,4 @@
-#include <Windows.h>
-#include <iostream>
-#include <filesystem>
-
+#include "stdafx.h"
 
 int main(int argc,char* argv[])
 {
@@ -21,8 +18,6 @@ int main(int argc,char* argv[])
 
                 PIMAGE_DOS_HEADER dosHeader = (PIMAGE_DOS_HEADER)fileData;
                 printf("[+] 0x%x\t : Magic Number\n", dosHeader->e_magic);
-
-
 
             }
             else {
