@@ -9,8 +9,16 @@ std::string sections[]{
     ".reloc"
 };
 
-void ProcessFile(std::string file, std::vector<PeClass> peList) {
-
+void ProcessFile(std::string path, std::vector<PeClass> peList) {
+    std::ifstream file(path);
+    std::string str;
+    std::string tempfile;
+    while (std::getline(file, str))
+    {
+        tempfile += str + "\n"; // save file string in temp string
+    }
+    // todo random char and save dos
+    // look windows docs to pe magic and class (for dont broke)
 }
 
 
@@ -79,11 +87,11 @@ int main(int argc,char* argv[])
                         // Insert in vector.
                         pel.insert(pel.begin(), pe);
                     }
-                    ProcessFile(argv[1], pel);
+                    
                 }
                 printf("\n\n");
-                
-
+                CloseHandle(file);
+                ProcessFile(argv[1], pel);
             }
             else {
                 printf("[-] Failed to open specified file. (%d)\n", file);

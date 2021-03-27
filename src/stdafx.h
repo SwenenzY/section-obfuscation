@@ -1,6 +1,7 @@
 #pragma once
 #include <Windows.h>
 #include <iostream>
+#include <fstream>
 #include <filesystem>
 #include <stdio.h>
 #include <random>
