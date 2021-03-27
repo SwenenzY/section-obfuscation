@@ -26,7 +26,6 @@ int main(int argc,char* argv[])
 
                 ZeroMemory(&SH[FH->NumberOfSections], sizeof(IMAGE_SECTION_HEADER));
 
-
                 for (size_t i = 0; i < FH->NumberOfSections; i++, ++SH)
                 {
                     printf("[+] '%s'\t : Section Text\n", SH->Name);
