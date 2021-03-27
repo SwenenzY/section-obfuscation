@@ -13,7 +13,7 @@ This project for randomize pe sections and hide from anticheats or pe(detect it 
 - After open cmd,
 - Project.exe yourexeordll.ext
 - and bum!
-- 
+
  ### Results in DLL
 
 ![Run](https://github.com/SwenenzY/section-obfuscation/blob/main/pic/1.png?raw=true)
