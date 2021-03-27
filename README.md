@@ -27,3 +27,17 @@ This project for randomize pe sections and hide from anticheats or pe(detect it 
 ![Run](https://github.com/SwenenzY/section-obfuscation/blob/main/pic/exe/3.png?raw=true)
 ![Run](https://github.com/SwenenzY/section-obfuscation/blob/main/pic/exe/4.png?raw=true)
 ![Run](https://github.com/SwenenzY/section-obfuscation/blob/main/pic/exe/5.png?raw=true)
+
+
+### Tech
+If you have suggestion and you error please notify me in [issues](https://github.com/SwenenzY/section-obfuscation/issues).
+- Visual Studio 2015+
+
+License
+----
+
+MIT
+
+**[Fun4Cheats.com](https://Fun4Cheats.com)**
+
+**[Mail Me!](mailto:mail@swenenzy.com)**
