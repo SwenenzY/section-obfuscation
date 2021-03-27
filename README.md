@@ -1,2 +1,2 @@
-# section-obsfucation
- PE Header (.rdata,.data,.text) obsfucation
+# section-obfuscation
+ PE Header (.rdata,.data,.text) obfuscation
