@@ -16,9 +16,17 @@ int main(int argc,char* argv[])
                 // read file bytes to memory
                 ReadFile(file, fileData, fileSize, &bytesRead, NULL);
 
+                // READ DOS HEADER 
                 PIMAGE_DOS_HEADER dosHeader = (PIMAGE_DOS_HEADER)fileData;
-                printf("[+] 0x%x\t : Magic Number\n", dosHeader->e_magic);
+                std::cout << "[*] Dos Header Info;" << std::endl;
+                printf("[+] 0x%x\t : Magic Number(e_magic)\n", dosHeader->e_magic);
+                printf("[+] 0x%x\t : File address of new exe header(e_lfanew)\n", dosHeader->e_lfanew);
 
+                // READ IMAGE_NT_HEADERS
+                std::cout << "[*] Image NT Headers Info;" << std::endl;
+                PIMAGE_NT_HEADERS imageNTHeader = (PIMAGE_NT_HEADERS)((DWORD)fileData + dosHeader->e_lfanew);
+
+                printf("[+] 0x%x\t : Signature\n", imageNTHeader->OptionalHeader.AddressOfEntryPoint);
             }
             else {
                 printf("[-] Failed to open specified file. (%d)\n", file);
