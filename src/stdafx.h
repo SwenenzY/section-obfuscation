@@ -9,16 +9,6 @@
 
 using namespace std;
 
-void replaceAll(std::string& str, const std::string& from, const std::string& to) {
-    if (from.empty())
-        return;
-    size_t start_pos = 0;
-    while ((start_pos = str.find(from, start_pos)) != std::string::npos) {
-        str.replace(start_pos, from.length(), to);
-        start_pos += to.length(); // In case 'to' contains 'from', like replacing 'x' with 'yx'
-    }
-}
-
 std::string random_string_only_char(std::string::size_type length)
 {
     string possible_characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
@@ -32,14 +22,3 @@ std::string random_string_only_char(std::string::size_type length)
     }
     return ret;
 }
-
-
-class PeClass {
-public:
-    const char* OrginalPE = "NULL";
-    bool isMatched = false;
-    bool operator==(PeClass p) {
-        if (p.OrginalPE == this->OrginalPE) return true;
-        else return false;
-    }
-};
