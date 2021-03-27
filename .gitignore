@@ -332,3 +332,14 @@ ASALocalRun/
 
 # Local History for Visual Studio
 .localhistory/
+build/project.exe.recipe
+build/project.tlog/CL.command.1.tlog
+build/project.tlog/CL.write.1.tlog
+build/project.tlog/CL.read.1.tlog
+build/project.tlog/link.command.1.tlog
+build/project.tlog/link.read.1.tlog
+build/project.tlog/link.write.1.tlog
+build/project.tlog/project.lastbuildstate
+build/project.vcxproj.FileListAbsolute.txt
+build/project.tlog/project.write.1u.tlog
+build/project.exe
