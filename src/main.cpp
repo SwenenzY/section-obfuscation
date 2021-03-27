@@ -1,5 +1,15 @@
 #include "stdafx.h"
 
+std::string sections[]{
+    ".text",
+    ".rdata",
+    ".data",
+    ".pdata",
+    ".idata",
+    ".reloc"
+};
+
+
 int main(int argc,char* argv[])
 {
     // have args
@@ -45,7 +55,18 @@ int main(int argc,char* argv[])
 
                 for (size_t i = 0; i < imageNTHeader->FileHeader.NumberOfSections; i++, ++sectionHeader)
                 {
-                    printf("[+] %s\t : Section Text\n", sectionHeader->Name);
+                    // need a better find solution    
+                    const char* PE = reinterpret_cast<const char*>(sectionHeader->Name);
+                    int isMatched = 0;
+                    for (std::string Item : sections)
+                    {
+                        if (std::string(PE).find(Item) != std::string::npos) {
+                            isMatched = 1;
+                            break;
+                        }
+                    }
+
+                    printf("[+] '%s'\t : Section Text(%d)\n", PE, isMatched);
                 }
 
             }
