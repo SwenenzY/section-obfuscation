@@ -15,4 +15,7 @@ This project for randomize pe sections and hide from anticheats or pe(detect it 
 - and bum!
 - 
  ### Results in DLL
- 
+
+![Run](https://github.com/SwenenzY/section-obfuscation/blob/main/pic/1.png?raw=true)
+![Run](https://github.com/SwenenzY/section-obfuscation/blob/main/pic/2.png?raw=true)
+![Run](https://github.com/SwenenzY/section-obfuscation/blob/main/pic/3.png?raw=true)
