@@ -26,7 +26,9 @@ int main(int argc,char* argv[])
                 std::cout << "[*] Image NT Headers Info;" << std::endl;
                 PIMAGE_NT_HEADERS imageNTHeader = (PIMAGE_NT_HEADERS)((DWORD)fileData + dosHeader->e_lfanew);
 
-                printf("[+] 0x%x\t : Signature\n", imageNTHeader->OptionalHeader.AddressOfEntryPoint);
+                printf("[+] 0x%x\t : Signature\n", imageNTHeader->Signature);
+                printf("[+] 0x%x\t : Time Date Stamp\n", imageNTHeader->FileHeader.TimeDateStamp);
+                printf("[+] 0x%x\t : Size Of Optional Header\n", imageNTHeader->FileHeader.SizeOfOptionalHeader);
             }
             else {
                 printf("[-] Failed to open specified file. (%d)\n", file);
