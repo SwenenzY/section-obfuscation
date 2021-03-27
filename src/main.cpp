@@ -1,13 +1,17 @@
 #include "stdafx.h"
 
 std::string sections[]{
-    ".text",
+    //".text",
     ".rdata",
     ".data",
     ".pdata",
     ".idata",
     ".reloc"
 };
+
+void ProcessFile(std::string file, std::vector<PeClass> peList) {
+
+}
 
 
 int main(int argc,char* argv[])
@@ -52,22 +56,33 @@ int main(int argc,char* argv[])
                 DWORD sectionLocation = (DWORD)imageNTHeader + sizeof(DWORD) + (DWORD)(sizeof(IMAGE_FILE_HEADER)) + (DWORD)imageNTHeader->FileHeader.SizeOfOptionalHeader;
 
                 auto sectionHeader = (PIMAGE_SECTION_HEADER)sectionLocation;
-
+                std::vector<PeClass> pel;
+                PeClass pe;
                 for (size_t i = 0; i < imageNTHeader->FileHeader.NumberOfSections; i++, ++sectionHeader)
                 {
                     // need a better find solution    
                     const char* PE = reinterpret_cast<const char*>(sectionHeader->Name);
-                    int isMatched = 0;
+                    pe.OrginalPE = PE;
+                    pe.isMatched = 0;
                     for (std::string Item : sections)
                     {
                         if (std::string(PE).find(Item) != std::string::npos) {
-                            isMatched = 1;
+                            pe.isMatched = 1;
                             break;
                         }
                     }
 
-                    printf("[+] '%s'\t : Section Text(%d)\n", PE, isMatched);
+                    printf("[+] '%s'\t : Section Text(%d)\n", pe.OrginalPE, pe.isMatched);
+
+                    if (std::find(pel.begin(), pel.end(), pe) != pel.end()) { /*Found do nothing*/ }
+                    else {
+                        // Insert in vector.
+                        pel.insert(pel.begin(), pe);
+                    }
+                    ProcessFile(argv[1], pel);
                 }
+                printf("\n\n");
+                
 
             }
             else {
