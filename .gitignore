@@ -347,3 +347,6 @@ build/prem.dll
 build/TEST.exe
 build/vmp3.5packed.exe
 build/Bypass.sys
+build/final.dll
+build/final.sys
+build/project.tlog/unsuccessfulbuild

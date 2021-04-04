@@ -15,6 +15,9 @@ int main(int argc,char* argv[])
     if (argv[1]) {
         // file exits
         if (std::filesystem::exists(argv[1])) {
+
+            std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
+
             std::cout << "[!] Working file : " << argv[1] << std::endl; // print
             HANDLE file = CreateFileA(argv[1], GENERIC_ALL, FILE_SHARE_READ, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
             if (file != INVALID_HANDLE_VALUE) {
@@ -56,6 +59,8 @@ int main(int argc,char* argv[])
                 WriteFile(file, pByte, fileSize, &dw, NULL);
                 CloseHandle(file);
                 printf("\n[+] Success\n");
+                std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
+                std::cout << "[-] Finished operation in " << std::chrono::duration_cast<std::chrono::milliseconds>(end - begin).count() << "ms" << std::endl;
             }
             else {
                 printf("[-] Failed to open specified file. (%d)\n", file);
