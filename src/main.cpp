@@ -61,6 +61,8 @@ int main(int argc,char* argv[])
                 printf("\n[+] Success\n");
                 std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
                 std::cout << "[-] Finished operation in " << std::chrono::duration_cast<std::chrono::milliseconds>(end - begin).count() << "ms" << std::endl;
+                std::this_thread::sleep_for(std::chrono::seconds(3));
+                
             }
             else {
                 printf("[-] Failed to open specified file. (%d)\n", file);
@@ -71,5 +73,5 @@ int main(int argc,char* argv[])
         std::cout << "[-] File is not specified, please use this project.exe any.exe/.dll" << std::endl;
     }
 
-    system("pause");
+    //system("pause");
 }
