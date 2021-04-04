@@ -3,6 +3,12 @@
     TODO ADD BLACKLIST SECTIONS
     CHECK SECTION VALID
 */
+
+const char blacklist[] = {
+    "INIT"
+};
+
+
 int main(int argc,char* argv[])
 {
     // have args
@@ -28,9 +34,15 @@ int main(int argc,char* argv[])
 
                 for (size_t i = 0; i < FH->NumberOfSections; i++, ++SH)
                 {
-                    printf("[+] '%s'\t : Section Text\n", SH->Name);
-
-                    RtlCopyMemory(&SH->Name, random_string_only_char(8).c_str(), 8);
+                    // because name is BYTE
+                    std::string s(reinterpret_cast<char*>(SH->Name), sizeof(SH->Name));
+                    if (s.find(blacklist) != string::npos) {
+                        printf("[+] '%s'\t : Section Text(Blacklist)\n", SH->Name);
+                    }
+                    else {
+                        printf("[+] '%s'\t : Section Text\n", SH->Name);
+                        RtlCopyMemory(&SH->Name, random_string_only_char(8).c_str(), 8);
+                    }
                 }
 
                 SetFilePointer(file, SH[FH->NumberOfSections].PointerToRawData + SH[FH->NumberOfSections].SizeOfRawData, NULL, FILE_BEGIN);
