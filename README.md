@@ -8,6 +8,9 @@ This project for randomize pe sections and hide from anticheats or pe(detect it 
 - Verify DOS Header
 - Null/Error checks.
 
+### Added
+- Blacklist sections
+
 ### How can i use?
 - First compile project in Release(X64),
 - After open cmd,
