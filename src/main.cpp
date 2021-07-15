@@ -4,10 +4,18 @@
     CHECK SECTION VALID
 */
 
-const char blacklist[] = {
-    "INIT"
+const char* blacklist[] = {
+    "INIT",
+    ".pdata",
+    ".rdata",
+    ".data"
 };
 
+bool isBlacklist(std::string arg) {
+
+    for (const auto& elem : blacklist) if (arg.find(elem) != std::string::npos) return true;
+    return false;
+}
 
 int main(int argc,char* argv[])
 {
@@ -38,13 +46,12 @@ int main(int argc,char* argv[])
                 for (size_t i = 0; i < FH->NumberOfSections; i++, ++SH)
                 {
                     // because name is BYTE
-                    std::string s(reinterpret_cast<char*>(SH->Name), sizeof(SH->Name));
-                    if (s.find(blacklist) != string::npos) {
+                    if (isBlacklist(std::string(reinterpret_cast<char*>(SH->Name), sizeof(SH->Name)))) {
                         printf("[+] '%s'\t : Section Text(Blacklist)\n", SH->Name);
                     }
                     else {
                         printf("[+] '%s'\t : Section Text\n", SH->Name);
-                        RtlCopyMemory(&SH->Name, random_string_only_char(8).c_str(), 8);
+                        RtlCopyMemory(&SH->Name, random_string(4).c_str(), 5);
                     }
                 }
 
