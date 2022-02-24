@@ -21,15 +21,16 @@ bool isBlacklist(std::string arg) {
 
 int main(int argc,char* argv[])
 {
+    const char* file_path = argv[1];
     // have args
-    if (argv[1]) {
+    if (file_path) {
         // file exits
-        if (std::filesystem::exists(argv[1])) {
+        if (std::filesystem::exists(file_path)) {
 
             std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
 
-            std::cout << "[!] Working file : " << argv[1] << std::endl; // print
-            HANDLE file = CreateFileA(argv[1], GENERIC_ALL, FILE_SHARE_READ, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
+            std::cout << "[!] Working file : " << file_path << std::endl; // print
+            HANDLE file = CreateFileA(file_path, GENERIC_ALL, FILE_SHARE_READ | FILE_SHARE_WRITE, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
             if (file != INVALID_HANDLE_VALUE) {
                 DWORD fileSize = GetFileSize(file, NULL);
                 BYTE* pByte = new BYTE[fileSize];
